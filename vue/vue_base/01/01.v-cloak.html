@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-cloak</title>
+		<script src="./lib/vue-2.4.0.js"></script>
+		<style type="text/css">
+			[v-cloak]{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!--插值表达式闪烁问题-->
+			<p v-cloak="">{{mes}}</p>
+			<!--v-text无闪烁问题-->
+			<h3 v-text="msg"></h3>
+			<div v-html="msg1">
+				
+			</div>
+		</div>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data:{
+					msg: '123',
+					msg1:'<h1>hahhaah</h1>'
+				}
+			})
+			/*
+			笔记
+			 v-bind：绑定属性，简写：
+			 v-on:时间绑定，简写@
+			*/
+		</script>
+	</body>
+</html>
