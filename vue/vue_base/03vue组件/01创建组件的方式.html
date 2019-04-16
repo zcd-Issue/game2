@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="./lib/vue-2.4.0.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	
+	
+	<body>
+		<div id="app">
+			<my-com1></my-com1>
+		</div>
+		<script type="text/javascript">
+			
+			
+			var com1 = Vue.extend({
+				template: '<h4>这是使用Vue.extend 创建的组件</h4>'
+			})
+			Vue.component('myCom1',com1);
+			
+			
+			var vm = new Vue({
+				el:'#app'
+			})
+			
+		</script>
+	</body>
+</html>
