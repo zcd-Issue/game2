@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>路由基本使用</title>
+		<script src="../03vue组件/lib/vue-2.4.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./lib/vue-router-3.0.1.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!--<a href="#/login">登录</a>
+			<a href="#/register">注册</a>-->
+			<router-link to="/login?id=123" tag="a">登录</router-link>
+			<router-link to="/register" tag="a"> 注册</router-link>
+			<router-view></router-view>
+			
+		</div>
+		<script type="text/javascript">
+			
+			var login = {
+				template: '<h2>登录组件</h2>',
+				created(){
+					console.log(this.$route.query.id)
+				}
+			}
+			var register = {
+				template: '<h2>注册组件</h2>'
+			}
+			
+			//创建一个路由对象
+			var routerObj = new VueRouter({
+				routes:[
+				//component只能放一个组件对象，不能放组件引用名称
+					{path:'/',redirect:'/login?id=""'},//重定向
+					{path: '/login',component: login},
+					{path: '/register',component: register}
+				]
+			})
+			
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					
+				},
+				methods: {
+					
+				},
+				//将路由对象注册到vue实例中去
+				router: routerObj  
+			})
+			
+		</script>
+	</body>
+</html>
